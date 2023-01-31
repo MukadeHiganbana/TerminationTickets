@@ -7,3 +7,14 @@ login =
 api_key =
 #project name from jira
 project =
+
+#parameters only for pub/sub
+[PUB_SUB]
+#choose google_credentials file
+google_credentials = credentials/google-cloud-service-key.json
+#choose topic name
+topic_name=
+#choose subscription name
+subscription_name=
+#choose project name
+project_id=

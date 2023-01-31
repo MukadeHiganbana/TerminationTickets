@@ -1,4 +1,6 @@
 configparser
 fastapi
-uvicorn
+google-cloud
+google-cloud-pubsub
 jira
+uvicorn

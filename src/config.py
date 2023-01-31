@@ -1,3 +1,4 @@
+import os
 import configparser
 from validation.config import ConfigValidator
 
@@ -10,9 +11,9 @@ class Config(object):
         if cls.__instance is None:
             cls.__config = configparser.ConfigParser()
             cls.__config.read("../deployment/configs/config.conf")
+            os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = cls.__config["PUB_SUB"]["google_credentials"]
 
             config = dict()
-            config["DEFAULT"] = cls.__config["DEFAULT"]
 
             sections = cls.__config.sections()
             for section in sections:

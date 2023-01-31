@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 
 from methods.JIRA import JiraManager
-
+from pub_sub.pubsub import PubSub
 
 router = APIRouter()
 
@@ -11,6 +11,6 @@ TAG = "Termination"
 
 @router.post("/" + VERSION + "/unassigned", tags=[TAG])
 def unassigned(user_id: int):
-    jira = JiraManager()
-    jira.unassigned(user_id)
+    pubsub = PubSub()
+    pubsub.publish({"user_id": user_id}, "unassigned")
     return {'result': 'All tickets unassigned'}
