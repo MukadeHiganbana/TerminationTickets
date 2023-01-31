@@ -2,3 +2,4 @@
 /deployment/scripts/local/.env
 /deployment/credentials/google-cloud-service-key.json
 .idea
+__pycache__
