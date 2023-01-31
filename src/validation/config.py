@@ -1,15 +1,12 @@
 from pydantic import BaseModel
-from typing import Optional
 
 
-class ConfigDefaultValidator(BaseModel):
-    pass
-
-
-class ConfigLocalValidator(BaseModel):
-    pass
+class ConfigJiraValidator(BaseModel):
+    server: str
+    login: str
+    api_key: str
+    project: str
 
 
 class ConfigValidator(BaseModel):
-    DEFAULT: ConfigDefaultValidator
-    LOCAL: Optional[ConfigLocalValidator]
+    JIRA: ConfigJiraValidator
