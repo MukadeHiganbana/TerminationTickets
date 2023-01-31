@@ -1,0 +1,3 @@
+./deployment/configs/config.conf
+./deployment/scripts/local/.env
+./deployment/credentials/google-cloud-service-key.json
