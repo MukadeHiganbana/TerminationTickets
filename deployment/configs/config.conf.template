@@ -1,0 +1,9 @@
+[JIRA]
+#server jira url
+server = ""
+#your email to which atlassian account was created
+login = ""
+#jira api key from user settings
+api_key = ""
+#project name from jira
+project = ""
