@@ -3,3 +3,4 @@
 /deployment/credentials/google-cloud-service-key.json
 .idea
 __pycache__
+vendor/
