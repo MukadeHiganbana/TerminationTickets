@@ -12,3 +12,9 @@ class JiraManager:
         self.project = self.config["JIRA"]["project"]
         self.jira_options = {"server": self.server}
         self.jira = JIRA(options=self.jira_options, basic_auth=(self.login, self.api_key))
+
+    def unassigned(self, user_id):
+        print("t")
+        issues_list = self.jira.search_issues(f"project = {self.project} AND assignee = {user_id}")
+        for issue in issues_list:
+            self.jira.assign_issue(issue, "none")
