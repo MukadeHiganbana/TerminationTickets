@@ -1,0 +1,39 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  labels:
+    app: termination-tickets-web-service-init
+  name: termination-tickets-web-service-init
+  namespace: default
+spec:
+  template:
+    spec:
+      containers:
+      - image: termination-tickets:1.0
+        imagePullPolicy: IfNotPresent
+        name: termination-tickets
+        command:
+          - pip
+          - install
+          - -r
+          - /app/deployment/requirements.txt
+          - --prefix=/app/vendor
+        volumeMounts:
+          - name: code
+            mountPath: /app
+          - name: ssh-keys
+            readOnly: true
+            mountPath: /root/.ssh
+      restartPolicy: Never
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+        - name: code
+          hostPath:
+            path: /mount-termination-tickets
+            type: Directory
+        - name: ssh-keys
+          secret:
+            secretName: ssh-keys
+            defaultMode: 0600

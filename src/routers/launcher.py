@@ -9,7 +9,7 @@ VERSION = "v1"
 TAG = "Termination"
 
 
-@router.post("/" + VERSION + "/upload", tags=[TAG])
+@router.post("/" + VERSION + "/unassigned", tags=[TAG])
 def unassigned(user_id: int):
     jira = JiraManager()
     jira.unassigned(user_id)
